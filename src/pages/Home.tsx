@@ -2,6 +2,7 @@ import { useGetTopHeadlinesQuery } from '../api/newsApi';
 import ArticleCard from '../components/articleCard';
 import FeaturedArticle from '../components/featureArticle';
 import SkeletonLoader from '../components/skeletonLoader';
+import icon from '/src/assets/icon.png';
 
 export default function Home() {
   const { data, error, isLoading } = useGetTopHeadlinesQuery();
@@ -22,9 +23,11 @@ export default function Home() {
 
   return (
     <div className='max-w-4xl mx-auto p-4 space-y-6'>
-      <h1 className=' grid justify-center text-3xl font-bold mb-6'>
-        Fortnightly News
-      </h1>
+      <div className='grid grid-flow-col w-max gap-2 justify-center mx-auto items-center'>
+        <img src={icon} className='w-10 h-10  rounded-full' alt='icon' />
+        <h1 className=' text-3xl font-bold '>Fortnightly News</h1>
+      </div>
+
       {featured && <FeaturedArticle article={featured} index={0} />}
       <div className='space-y-4'>
         {rest.map((article, i) => (
